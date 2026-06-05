@@ -11,7 +11,7 @@ async function startServer() {
   app.use(express.json());
 
   // API routes
-  app.post("/api/contact", (req, res) => {
+  app.post("/api/contact", async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     // Server-side validation
@@ -23,10 +23,77 @@ async function startServer() {
       return res.status(400).json({ error: "Invalid email format" });
     }
 
-    // In a real app, you'd send an email or save to DB here
-    console.log("Contact form submission:", { name, email, subject, message });
+    console.log("Contact form submission received:", { name, email, subject, message });
 
-    res.json({ success: true, message: "Message received successfully" });
+    const apiKey = process.env.RESEND_API_KEY;
+    let emailSent = false;
+
+    if (apiKey) {
+      try {
+        const { Resend } = await import("resend");
+        const resend = new Resend(apiKey);
+        await resend.emails.send({
+          from: "RN Studio Lead <onboarding@resend.dev>",
+          to: ["raymondndungu8@gmail.com"],
+          subject: `🚀 New Project Lead: ${name}`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 30px; border: 1px solid #222; border-radius: 24px; background-color: #0c0c0c; color: #d7e2ea; box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
+              
+              <!-- Lead Header -->
+              <div style="border-bottom: 1px solid rgba(215, 226, 234, 0.1); padding-bottom: 25px; margin-bottom: 30px;">
+                <span style="font-size: 10px; font-weight: 800; color: #C5A059; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 6px;">New Collaboration</span>
+                <h1 style="font-size: 28px; font-weight: 900; color: #ffffff; margin: 0; text-transform: uppercase; letter-spacing: -0.5px; line-height: 1.1;">Start a Project</h1>
+                <p style="font-size: 13px; color: rgba(215, 226, 234, 0.5); margin: 8px 0 0 0;">An inquiry was submitted through your professional portfolio storefront.</p>
+              </div>
+
+              <!-- Metadata Block -->
+              <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(215, 226, 234, 0.08); border-left: 4px solid #C5A059; padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr style="border-bottom: 1px solid rgba(215, 226, 234, 0.04);">
+                    <td style="padding: 6px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(215, 226, 234, 0.4); width: 30%;">Client Name:</td>
+                    <td style="padding: 6px 0; font-size: 14px; font-weight: 600; color: #ffffff;">${name}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(215, 226, 234, 0.04);">
+                    <td style="padding: 6px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(215, 226, 234, 0.4);">Email:</td>
+                    <td style="padding: 6px 0; font-size: 14px; font-weight: 600; color: #C5A059;"><a href="mailto:${email}" style="color: #C5A059; text-decoration: none;">${email}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(215, 226, 234, 0.4);">Date:</td>
+                    <td style="padding: 6px 0; font-size: 14px; color: rgba(215, 226, 234, 0.82);">${new Date().toLocaleString('en-US', { timeZone: 'UTC' })} UTC</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Message Block -->
+              <div>
+                <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(215, 226, 234, 0.4); display: block; margin-bottom: 8px;">Project Brief & Description</span>
+                <div style="background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(215, 226, 234, 0.05); padding: 24px; border-radius: 16px; font-size: 14.5px; line-height: 1.6; color: #ffffff; white-space: pre-wrap; margin: 0;">${message}</div>
+              </div>
+
+              <!-- Footer signature badge -->
+              <div style="margin-top: 40px; border-top: 1px solid rgba(215, 226, 234, 0.08); padding-top: 25px; text-align: center;">
+                <span style="font-size: 12px; font-weight: 900; color: #ffffff; letter-spacing: 2px;">RN STUDIO</span>
+                <p style="font-size: 10px; color: rgba(215, 226, 234, 0.3); margin: 5px 0 0 0;">INTELLIGENCE • DESIGN • ARCHITECTURE</p>
+              </div>
+
+            </div>
+          `
+        });
+        console.log("Email dispatched successfully to raymondndungu8@gmail.com via Resend.");
+        emailSent = true;
+      } catch (err) {
+        console.error("Resend delivery failed:", err);
+      }
+    } else {
+      console.warn("RESEND_API_KEY environment variable is absent. Running offline simulator.");
+    }
+
+    res.json({ 
+      success: true, 
+      message: emailSent 
+        ? "Your project notification was dispatched to Raymond." 
+        : "Message logged successfully (Running in simulation mode, please configure RESEND_API_KEY for direct email delivery)." 
+    });
   });
 
   // Client project document intake & AI generation endpoint

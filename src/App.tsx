@@ -21,6 +21,48 @@ import { ContactButton } from './components/ContactButton';
 import { LiveProjectButton } from './components/LiveProjectButton';
 import { FadeIn } from './components/FadeIn';
 import { AnimatedText } from './components/AnimatedText';
+import { WebGLShader } from './components/ui/web-gl-shader';
+import { StardustButton } from './components/ui/stardust-button';
+
+// @ts-expect-error - image asset import
+import profileImage from './assets/images/profile_raymond_3d_1780645210471.png';
+
+// @ts-expect-error - image asset import
+import ceeDashboard from './assets/images/cee_revision_dashboard_1780643184610.png';
+// @ts-expect-error - image asset import
+import ceeMobile from './assets/images/cee_revision_mobile_1780643200894.png';
+// @ts-expect-error - image asset import
+import ceeBadge from './assets/images/cee_revision_badge_1780643253454.png';
+
+// @ts-expect-error - image asset import
+import hatProduct from './assets/images/african_hat_product_1780643216593.png';
+// @ts-expect-error - image asset import
+import hatTraveler from './assets/images/african_hat_traveler_1780643232057.png';
+// @ts-expect-error - image asset import
+import hatBox from './assets/images/african_hat_box_1780643269655.png';
+// @ts-expect-error - image asset import
+import hatSafari from './assets/images/african_safari_wildlife_1780643552194.png';
+
+// @ts-expect-error - image asset import
+import retailShelves from './assets/images/retail_supermarket_shelves_1780643942616.png';
+// @ts-expect-error - image asset import
+import retailCheckout from './assets/images/retail_smart_checkout_1780643962728.png';
+// @ts-expect-error - image asset import
+import retailInterior from './assets/images/retail_boutique_interior_1780643981894.png';
+
+// @ts-expect-error - image asset import
+import novaAthlete from './assets/images/nova_athlete_action_1780644002537.png';
+// @ts-expect-error - image asset import
+import novaDevice from './assets/images/nova_interactive_device_1780644020908.png';
+// @ts-expect-error - image asset import
+import novaWorkout from './assets/images/nova_people_workout_1780644039339.png';
+
+// @ts-expect-error - image asset import
+import rnStation from './assets/images/rn_studio_designer_station_1780644061416.png';
+// @ts-expect-error - image asset import
+import rnCooperation from './assets/images/rn_studio_office_cooperation_1780644084097.png';
+// @ts-expect-error - image asset import
+import rnAgents from './assets/images/rn_studio_intelligent_agents_1780644103297.png';
 
 // --- Projects Data ---
 const PROJECTS = [
@@ -28,27 +70,45 @@ const PROJECTS = [
     id: '01',
     category: 'Premium Brand Identity & Web Dev',
     title: 'RN Studio',
-    col1Image1: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-    col1Image2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-    col2Image: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
+    col1Image1: rnStation,
+    col1Image2: rnCooperation,
+    col2Image: rnAgents,
     link: 'https://github.com/raymondndungu8-blip'
   },
   {
     id: '02',
     category: 'AI-Integrated Fitness & Motion Tracking',
     title: 'NOVA Core',
-    col1Image1: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-    col1Image2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-    col2Image: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
+    col1Image1: novaAthlete,
+    col1Image2: novaDevice,
+    col2Image: novaWorkout,
     link: 'https://github.com/raymondndungu8-blip'
   },
   {
     id: '03',
     category: 'Digital Retail & Automotive Transformation',
     title: 'Retail Modernization',
-    col1Image1: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-    col1Image2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-    col2Image: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
+    col1Image1: retailShelves,
+    col1Image2: retailCheckout,
+    col2Image: retailInterior,
+    link: 'https://github.com/raymondndungu8-blip'
+  },
+  {
+    id: '04',
+    category: 'Interactive EdTech Learning Platform',
+    title: 'Cee Revision',
+    col1Image1: ceeBadge,
+    col1Image2: ceeMobile,
+    col2Image: ceeDashboard,
+    link: 'https://github.com/raymondndungu8-blip'
+  },
+  {
+    id: '05',
+    category: 'Artisanal Heritage Apparel & Safari Gear',
+    title: 'African Hat',
+    col1Image1: hatProduct,
+    col1Image2: hatTraveler,
+    col2Image: hatSafari,
     link: 'https://github.com/raymondndungu8-blip'
   }
 ];
@@ -149,6 +209,33 @@ export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [loadingComplete, setLoadingComplete] = useState(false);
+
+  useEffect(() => {
+    const startTime = Date.now();
+    const duration = 800; // Snappy 800ms preloader for super fast perceived load speed
+
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTime;
+      const computed = Math.min(Math.round((elapsed / duration) * 100), 100);
+      
+      setLoadingProgress(computed);
+
+      if (elapsed < duration) {
+        requestAnimationFrame(updateProgress);
+      } else {
+        setTimeout(() => {
+          setLoadingComplete(true);
+        }, 150);
+      }
+    };
+
+    requestAnimationFrame(updateProgress);
+  }, []);
   
   // Custom scroll listener refs for Passive Marquee Horiz Trans
   const marqueeContainerRef = useRef<HTMLElement>(null);
@@ -156,17 +243,33 @@ export default function App() {
   const row2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const parent = marqueeContainerRef.current;
-      if (!parent) return;
-      const sectionTop = parent.offsetTop;
-      const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      
-      if (row1Ref.current) {
-        row1Ref.current.style.transform = `translate3d(${offset - 200}px, 0px, 0px)`;
+    const parent = marqueeContainerRef.current;
+    if (!parent) return;
+
+    // Cache the offsetTop during mount and only recalculate on resize to prevent layout thrashing
+    let sectionTop = parent.offsetTop;
+    const handleResize = () => {
+      if (parent) {
+        sectionTop = parent.offsetTop;
       }
-      if (row2Ref.current) {
-        row2Ref.current.style.transform = `translate3d(${- (offset - 200)}px, 0px, 0px)`;
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+
+    let ticked = false;
+    const handleScroll = () => {
+      if (!ticked) {
+        requestAnimationFrame(() => {
+          const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.35;
+          
+          if (row1Ref.current) {
+            row1Ref.current.style.transform = `translate3d(${offset - 200}px, 0px, 0px)`;
+          }
+          if (row2Ref.current) {
+            row2Ref.current.style.transform = `translate3d(${- (offset - 200)}px, 0px, 0px)`;
+          }
+          ticked = false;
+        });
+        ticked = true;
       }
     };
 
@@ -174,20 +277,56 @@ export default function App() {
     handleScroll(); // initial sync
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Form submission handler
-  const handleFormSubmit = (e: React.FormEvent) => {
+  // Form submission handler querying backend and routing message to email
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setIsContactOpen(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 2500);
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormError("All fields are required. Please provide your name, email, and project description.");
+      return;
+    }
+    
+    setFormLoading(true);
+    setFormError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: 'RN Studio Portfolio Project Inquiry',
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const errJson = await response.json().catch(() => ({ error: 'Inquiry dispatch failed.' }));
+        throw new Error(errJson.error || 'Server error occurred during dispatch.');
+      }
+
+      await response.json();
+      setFormSubmitted(true);
+      
+      // Auto close and reset state after success screen shows
+      setTimeout(() => {
+        setFormSubmitted(false);
+        setIsContactOpen(false);
+        setFormData({ name: '', email: '', message: '' });
+      }, 3500);
+    } catch (err: any) {
+      console.error("Submission failed:", err);
+      setFormError(err.message || 'An unexpected networking bottleneck occurred.');
+    } finally {
+      setFormLoading(false);
+    }
   };
 
   // Scroll smoothly to targeting hash
@@ -199,13 +338,91 @@ export default function App() {
   };
 
   return (
-    <div className="relative bg-[#0C0C0C] text-[#D7E2EA] antialiased select-none font-sans overflow-x-clip min-h-screen">
+    <>
+      <AnimatePresence mode="wait">
+        {!loadingComplete && (
+          <motion.div
+            key="preloader"
+            initial={{ opacity: 1 }}
+            exit={{ 
+              y: '-100dvh',
+              transition: { 
+                duration: 0.8, 
+                ease: [0.76, 0, 0.24, 1] 
+              }
+            }}
+            className="fixed inset-0 z-[100] flex flex-col justify-between p-8 md:p-12 bg-[#050507] text-[#D7E2EA] font-sans overflow-hidden select-none pointer-events-auto"
+          >
+            {/* Top Row */}
+            <div className="w-full flex justify-between items-center text-[10px] sm:text-xs uppercase tracking-widest font-mono text-[#D7E2EA]/30">
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-[#C5A059] rounded-full animate-pulse" />
+                RN STUDIO 2026
+              </span>
+              <span>CREATIVE PORTFOLIO</span>
+            </div>
+
+            {/* Center: Beautiful Rising Typography */}
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="overflow-hidden mb-3">
+                <motion.h1 
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.215, 0.610, 0.355, 1], delay: 0.1 }}
+                  className="hero-heading text-[10vw] sm:text-[6vw] md:text-[5vw] font-black uppercase tracking-tight leading-none text-white flex items-center gap-2.5 sm:gap-4 justify-center"
+                >
+                  RAYMOND <span className="text-[#C5A059] text-[5vw] sm:text-[3vw]">✧</span> ND&apos;UNGU
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden h-6 sm:h-8">
+                <motion.p 
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.215, 0.610, 0.355, 1], delay: 0.3 }}
+                  className="font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.25em] text-[#D7E2EA]/60"
+                >
+                  ✧ DESIGN IS EVERYTHING ✦
+                </motion.p>
+              </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="w-full flex justify-between items-end">
+              <div className="flex flex-col gap-1 items-start text-left text-[9px] sm:text-xs font-mono text-[#D7E2EA]/30 uppercase">
+                <span>SYSTEM INIT</span>
+                <span>GEOMETRY SHADERS ON</span>
+              </div>
+              
+              <div className="text-[12vw] sm:text-[7vw] font-bold font-mono tracking-tighter leading-none tabular-nums text-white">
+                {String(loadingProgress).padStart(3, '0')}<span className="text-[5vw] sm:text-[2.5vw] text-[#C5A059] font-light">%</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ 
+          duration: 1.2, 
+          ease: [0.16, 1, 0.3, 1], // Custom ultra-smooth easeOutExpo 
+          staggerChildren: 0.15 
+        }}
+        className="relative bg-[#0C0C0C] text-[#D7E2EA] antialiased select-none font-sans overflow-x-clip min-h-screen"
+      >
       
       {/* 1. HERO SECTION */}
-      <section className="relative h-[100dvh] sm:h-screen min-h-[660px] sm:min-h-0 w-full flex flex-col justify-between overflow-hidden px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 bg-[#0C0C0C]">
+      <section className="relative h-[85dvh] xs:h-[88dvh] sm:h-screen min-h-[540px] xs:min-h-[580px] sm:min-h-0 w-full flex flex-col justify-between overflow-hidden px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 bg-[#0C0C0C]">
+        
+        {/* Interactive 3D WebGL Shader background */}
+        <div className="absolute inset-0 z-0 opacity-80 pointer-events-none select-none">
+          <WebGLShader />
+        </div>
         
         {/* Navbar inside Hero Section */}
-        <FadeIn delay={0} y={-20} as="nav" className="w-full flex justify-between items-center pt-6 md:pt-8 relative z-30">
+        <FadeIn delay={0} y={-20} as="nav" className="w-full flex justify-between items-center pt-6 md:pt-8 relative z-35">
           <button 
             onClick={() => scrollToSection('about')} 
             className="font-sans font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200 cursor-pointer text-[#D7E2EA]"
@@ -217,7 +434,7 @@ export default function App() {
             onClick={() => scrollToSection('price')} 
             className="font-sans font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200 cursor-pointer text-[#D7E2EA]"
           >
-            Price
+            Services
           </button>
           
           <button 
@@ -235,24 +452,37 @@ export default function App() {
           </button>
         </FadeIn>
 
-        {/* Hero Huge Heading Stack - Positioned behind portrait with editorial scale depth, lifted on mobile */}
-        <div className="absolute left-1/2 top-[30%] xs:top-[32%] sm:top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-10 px-6 pointer-events-none">
-          <FadeIn delay={0.15} y={0} className="w-full flex justify-center">
-            <h1 className="hero-heading text-[12vw] xs:text-[13vw] sm:text-[15vw] md:text-[16vw] lg:text-[17vw] font-black uppercase tracking-tighter leading-[0.85] select-none flex flex-col items-center justify-center text-white/90">
-              <span>HI,</span>
-              <span>I&apos;M RAYMOND</span>
+        {/* Hero Huge Heading Stack - Structured as an editorial framing system around the centered portrait */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-10 px-6 pointer-events-none flex flex-col justify-between items-center h-[46dvh] xs:h-[50dvh] sm:h-[70dvh] max-h-[230px] xs:max-h-[270px] sm:max-h-[500px] md:max-h-[580px] lg:max-h-[640px] xl:max-h-[680px]">
+          <FadeIn delay={0.15} y={-15} className="w-full flex justify-center">
+            <h1 className="hero-heading text-[8vw] xs:text-[9vw] sm:text-[8vw] md:text-[7vw] lg:text-[6.5vw] font-black uppercase tracking-tight leading-none text-white/50 select-none">
+              HI, I&apos;M
+            </h1>
+          </FadeIn>
+          
+          <FadeIn delay={0.3} y={15} className="w-full flex justify-center">
+            <h1 className="hero-heading text-[12vw] xs:text-[13vw] sm:text-[14vw] md:text-[13vw] lg:text-[12vw] font-black uppercase tracking-tighter leading-none text-white select-none">
+              RAYMOND
             </h1>
           </FadeIn>
         </div>
 
-        {/* Anchor Portrait layered in front of heading, centered vertically on mobile to maximize screen coexistence */}
-        <div className="absolute left-1/2 top-[58%] xs:top-[56%] sm:top-auto sm:bottom-0 -translate-x-1/2 -translate-y-1/2 sm:translate-y-0 z-20 w-[160px] xs:w-[190px] sm:w-[280px] md:w-[350px] lg:w-[420px] xl:w-[450px] select-none pointer-events-none sm:pointer-events-auto">
-          <FadeIn delay={0.6} y={30}>
+        {/* Anchor Portrait layered in front of heading on mobile, and behind on tablet/PC to construct a gorgeous editorial depth effect */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 sm:z-[5] w-[130px] xs:w-[155px] sm:w-[230px] md:w-[290px] lg:w-[350px] xl:w-[380px] select-none pointer-events-none sm:pointer-events-auto">
+          {/* Subtle multi-layer ambient glows to blend background and elevate the 3D depth of the face */}
+          <div className="absolute inset-0 bg-[#C5A059]/12 rounded-full blur-[60px] -z-10 pointer-events-none scale-110" />
+          <div className="absolute inset-0 bg-violet-600/10 rounded-full blur-[90px] -z-10 pointer-events-none scale-125 animate-pulse duration-[7s]" />
+          
+          <FadeIn delay={0.4} y={20}>
             <Magnet padding={150} strength={3}>
               <img 
-                src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" 
+                src={profileImage} 
                 alt="Raymond portrait" 
-                className="w-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] opacity-95 grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full aspect-square object-cover mix-blend-screen contrast-[1.1] brightness-[1.05] hover:scale-[1.04] transition-all duration-500"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 98%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 98%)'
+                }}
                 referrerPolicy="no-referrer"
               />
             </Magnet>
@@ -260,17 +490,22 @@ export default function App() {
         </div>
 
         {/* Bottom Bar Segment - Stacked on mobile and row on desktop */}
-        <div className="relative w-full flex flex-col sm:flex-row justify-between items-center sm:items-end gap-5 sm:gap-0 z-30 pb-2 sm:pb-0">
+        <div className="relative w-full flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 sm:gap-0 z-30 pb-2 sm:pb-0">
           {/* Left Summary Text */}
           <FadeIn delay={0.35} y={20} className="w-full sm:w-auto">
-            <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug text-xs sm:text-[1.2vw] md:text-sm max-w-[280px] sm:max-w-[280px] md:max-w-[340px] text-center sm:text-left mx-auto sm:mx-0">
+            <p className="text-white font-semibold uppercase tracking-wider leading-relaxed text-xs sm:text-[1.2vw] md:text-sm max-w-[250px] xs:max-w-[280px] sm:max-w-[280px] md:max-w-[340px] text-center sm:text-left mx-auto sm:mx-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               a kenya-based web developer & creative technologist specializing in premium UI/UX design
             </p>
           </FadeIn>
 
           {/* Right Floating Contact Button */}
-          <FadeIn delay={0.5} y={20} className="w-full sm:w-auto flex justify-center">
-            <ContactButton onClick={() => setIsContactOpen(true)} className="w-full sm:w-auto min-w-[190px] sm:min-w-0" />
+          <FadeIn delay={0.5} y={20} className="w-full sm:w-auto flex justify-center z-30">
+            <StardustButton 
+              onClick={() => setIsContactOpen(true)} 
+              className="w-full sm:w-auto min-w-[190px] sm:min-w-[210px] scale-90 xs:scale-100"
+            >
+              Contact Me
+            </StardustButton>
           </FadeIn>
         </div>
 
@@ -508,14 +743,14 @@ export default function App() {
           {/* Headline heading */}
           <FadeIn delay={0.1} y={40} className="w-full flex justify-center mb-16 sm:mb-24">
             <h2 className="hero-heading font-black uppercase text-center text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[160px] tracking-tight leading-none">
-              Project
+              Projects
             </h2>
           </FadeIn>
 
           {/* Stacking Sticky Cards loop */}
           <div className="space-y-24 sm:space-y-32">
             {PROJECTS.map((proj, idx) => (
-              <ProjectCardWrapper key={proj.id} index={idx} total={3}>
+              <ProjectCardWrapper key={proj.id} index={idx} total={PROJECTS.length}>
                 
                 {/* Visual Glass Card Body */}
                 <div className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-5 sm:p-7 md:p-10 flex flex-col shadow-2xl">
@@ -705,16 +940,23 @@ export default function App() {
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-5">
+                  {formError && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs font-sans text-center">
+                      {formError}
+                    </div>
+                  )}
+
                   <div className="flex flex-col space-y-1">
                     <label htmlFor="formName" className="text-[9px] uppercase tracking-widest text-[#D7E2EA]/50 font-mono font-bold">Your Name</label>
                     <input 
                       id="formName"
                       type="text" 
                       required
+                      disabled={formLoading}
                       placeholder="e.g. Alexis Carter"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C5A059] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"
+                      className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C5A059] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors disabled:opacity-50"
                     />
                   </div>
 
@@ -724,10 +966,11 @@ export default function App() {
                       id="formEmail"
                       type="email" 
                       required
+                      disabled={formLoading}
                       placeholder="e.g. alexis@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C5A059] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"
+                      className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C5A059] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors disabled:opacity-50"
                     />
                   </div>
 
@@ -736,23 +979,30 @@ export default function App() {
                     <textarea 
                       id="formMessage"
                       rows={4}
+                      required
+                      disabled={formLoading}
                       placeholder="Describe your web design, retail integrations, fitness applications or custom aesthetic..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C5A059] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors resize-none"
+                      className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C5A059] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors resize-none disabled:opacity-50"
                     />
                   </div>
 
                   <button 
                     type="submit"
-                    className="w-full mt-4 py-4 uppercase font-sans font-bold tracking-widest text-xs text-white rounded-xl cursor-pointer shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                    disabled={formLoading}
+                    className="w-full mt-4 py-4 uppercase font-sans font-bold tracking-widest text-xs text-white rounded-xl cursor-pointer shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{
                       background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
                       boxShadow: '0px 4px 10px rgba(181, 1, 167, 0.25)',
                     }}
                   >
-                    <Send size={14} />
-                    <span>Submit Request</span>
+                    {formLoading ? (
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin block" />
+                    ) : (
+                      <Send size={14} />
+                    )}
+                    <span>{formLoading ? 'Dispatching...' : 'Submit Request'}</span>
                   </button>
                 </form>
               )}
@@ -762,6 +1012,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-    </div>
-  );
+    </motion.div>
+  </>
+);
 }
